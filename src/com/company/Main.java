@@ -50,6 +50,39 @@ public class Main {
         double kilograms = pounds * 0.45359237D;
         System.out.println(kilograms);
 
+        /*
+            Create a method called calcFeetAndInchesToCentimeters.
+            It needs to have two parameters.Feet is the first parameter and inches is the 2nd one.
+            You should validate that the first parameter feet is >= 0;
+            You should validate that the second parameter feet is >= 0 and <= 12;
+            If both are valid, calculate how many centimeters comprise the feet and inches passed to this method and return that value.
+            Overload that method by passing only one parameter inches.
+            Validate that it is greater than 0. return -1 if it is not true else calculate how many feet are in the inches.
+            Call the first method passing the correct feet and inches.
+            // 1 inch = 2.54cm; 1 foot = 12 inches.
+         */
+
+       System.out.println("6ft 2inches = " + calcFeetAndInchesToCentimeters(6, 2) + "cm");
+
+    }
+
+
+    public static double calcFeetAndInchesToCentimeters(int feet, int inches) {
+       if(feet <= 0 || inches < 0 ||  inches > 12){
+           return -1;
+       }
+       double feetConvertedToCentimeters = (feet * 12) * 2.54;
+       double inchesConvertedToCentimeters = inches * 2.54;
+        return feetConvertedToCentimeters + inchesConvertedToCentimeters;
+    }
+
+    public static double calcFeetAndInchesToCentimeters(int inches) {
+        if(inches < 0 ||  inches > 12){
+            return -1;
+        }
+
+        int inchesToFeet = inches / 12;
+        return calcFeetAndInchesToCentimeters(inchesToFeet, inches);
     }
 }
 
