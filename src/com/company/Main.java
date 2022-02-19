@@ -186,6 +186,9 @@ NOTE: Do not add a main method to the solution code.
          System.out.println("height= " + wall.getHeight());
          System.out.println("area= " + wall.getArea());
 
+         Outlander outlander = new Outlander(36);
+         outlander.accelerate(30);
+        outlander.accelerate(20);
 
     }
 }
