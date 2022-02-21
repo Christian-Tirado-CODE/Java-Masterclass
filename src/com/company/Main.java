@@ -20,11 +20,65 @@ public class Main {
 
          */
 
-        int[] integers = new int[5];
-        integers = getIntegers();
-        printArray(integers);
-        sortArray(integers);
+//        int[] integers = new int[5];
+//        integers = getIntegers();
+//        printArray(integers);
+//        sortArray(integers);
 
+        /*
+            Create a program that implements a simple mobile phone with the following capabilities.
+            Able to store, modify, remove and query contact names.
+            You will want to create a separate class for Contacts (name and phone number).
+            Create a master class (MobilePhone) that holds the ArrayList of Contacts.
+            The MobilePhone class has the functionality listed above.
+            Add the menu of options that are available.
+            Options: Quit, print list of contacts, add new contact, update existing contact, remove contact.
+            Be sure not to expose the inner workings of the ArrayList to MobilePhone.
+            MobilePhone should do everything with Contact objects only.
+         */
+         MobilePhone phone = new MobilePhone();
+         boolean quit = false;
+         Scanner scanner = new Scanner(System.in);
+         int option;
+         do {
+
+              System.out.println("Options: 1. Quit, 2. print list of contacts, 3.add new contact, 4. update existing contact, 5. remove contact.");
+              option = scanner.nextInt();
+              String inputName;
+              String inputPhoneNumber;
+              switch (option){
+                  case 1:
+                       quit = true;
+                       break;
+                  case 2:
+                       phone.printContacts();
+                       break;
+                  case 3:
+                       System.out.println("Enter name: ");
+                        inputName = scanner.next();
+                      System.out.println("Enter phone number: ");
+                        inputPhoneNumber = scanner.next();
+                       phone.storeContact(inputName, inputPhoneNumber);
+                       break;
+                  case 4:
+                      System.out.println("Enter the name of the contact you wish to update: ");
+                       inputName = scanner.next();
+                       if(phone.hasContact(inputName)){
+                           System.out.println("Enter phone number: ");
+                           inputPhoneNumber = scanner.next();
+                           phone.modifyContact(inputName, inputPhoneNumber);
+                       }
+
+                        break;
+                  case 5:
+                      System.out.println("Enter name: ");
+                      inputName = scanner.next();
+                      phone.removeContact(inputName);
+                      break;
+              }
+         }while (!quit);
+
+        scanner.close();
     }
 
     public static int[] getIntegers(){
